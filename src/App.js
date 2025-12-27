@@ -5,7 +5,9 @@ import TextForm from './components/TextForm';
 import About from './components/About';
 import Alert from './components/Alert';
 import { useState } from 'react';
-// import { BrowserRouter as Router, Switch, Route, Link} from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
+
+
 
 
 
@@ -43,9 +45,16 @@ function App() {
   return (
     <>
       <NavBar mode={mode} toggleMode={toggleMode} />
-      <Alert alert={alert} />
-      <TextForm heading="Enter text bellow to capitalize" mode= {mode}/>
-      <About mode={mode} text={text}/>
+      <Alert alert={alert} /> 
+      <Routes>
+        <Route
+          path="/"
+          element={
+            <TextForm heading="Enter text below to capitalize" mode={mode} />
+          }
+        />
+        <Route path="/about" element={<About mode={mode} text={text} />} />
+      </Routes>
     </>
   );
 }

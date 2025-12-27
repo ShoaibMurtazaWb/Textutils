@@ -21,7 +21,9 @@ export default function TextForm(props) {
 
     function onChangeText(e){
         setText(e.target.value)
-        setWord(e.target.value.split(" ").length)
+        setWord(e.target.value.split(" ").filter((element) => {
+          return element.length !== 0
+        }).length)
         setCharacter(e.target.value.length)
     }
 
