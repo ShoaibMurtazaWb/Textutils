@@ -10,15 +10,21 @@ export default function TextForm(props) {
     function onClickCap (){
         let newText = text.toUpperCase();
         setText(newText);
+        props.showAlert("Text Capitalized", "secondary");
     }
     function onClickLow (){
         let newText = text.toLowerCase();
         setText(newText);
+        props.showAlert("Text Converted to LowerCase", "secondary");
     }
     function onClear() {
       setText("");
     }
 
+    function onClickCopy(){
+      navigator.clipboard.writeText(text);
+      props.showAlert("Text Copoied to Clipboard", "secondary");
+    };
     function onChangeText(e){
         setText(e.target.value)
         setWord(e.target.value.split(" ").filter((element) => {
@@ -54,6 +60,7 @@ export default function TextForm(props) {
               type="button"
               className="btn btn-primary my-3"
               onClick={onClickCap}
+              disabled={text.length === 0}
             >
               Captalize
             </button>
@@ -61,13 +68,23 @@ export default function TextForm(props) {
               type="button"
               className="btn btn-primary my-3 mx-3"
               onClick={onClickLow}
+              disabled={text.length === 0}
             >
               LowerCase
             </button>
             <button
               type="button"
+              className="btn btn-primary my-3 mx-3"
+              onClick={onClickCopy}
+              disabled={text.length === 0}
+            >
+              Copy
+            </button>
+            <button
+              type="button"
               className="btn btn-primary my-3 "
               onClick={onClear}
+              disabled={text.length === 0}
             >
               Clear
             </button>

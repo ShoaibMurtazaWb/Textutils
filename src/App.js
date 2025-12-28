@@ -1,4 +1,3 @@
-import logo from './logo.svg';
 import './App.css';
 import NavBar from './components/NavBar';
 import TextForm from './components/TextForm';
@@ -50,7 +49,7 @@ function App() {
         <Route
           path="/"
           element={
-            <TextForm heading="Enter text below to capitalize" mode={mode} />
+            <TextForm heading="Enter text below to capitalize" mode={mode} showAlert= {showAlert} />
           }
         />
         <Route path="/about" element={<About mode={mode} text={text} />} />
